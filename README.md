@@ -1,114 +1,69 @@
-# SafeGig — AI-Powered Parametric Income Insurance for India's Gig Workers
+# SafeGig
 
-> Guidewire DEVTrails 2026 Hackathon | Team: Codestorm
+AI-powered parametric income insurance for India's gig delivery workers.
 
-SafeGig protects India's gig delivery workers (Zepto, Blinkit, Swiggy Instamart) from income loss caused by external disruptions — extreme weather, pollution spikes, or local strikes — using parametric triggers and AI automation for instant payouts without claim filing.
+Built for Guidewire DEVTrails 2026 Hackathon by Team Codestorm.
 
----
+SafeGig protects workers on platforms like Zepto, Blinkit, and Swiggy Instamart from income loss caused by extreme weather, pollution spikes, or local strikes. Instead of filing claims, payouts happen automatically when a trigger condition is met.
 
-## Problem Statement
+## The Problem
 
-India's hyperlocal delivery ecosystem powers 10-minute grocery delivery, but gig workers face severe income volatility:
+India's hyperlocal delivery ecosystem runs on gig workers, but those workers have zero income protection when things go wrong.
 
-| Event | Income Loss |
-|---|---|
-| Monsoon disruption | ₹1500 – ₹3600/week |
-| Heatwave | Lost afternoon working hours |
-| Pollution spike | Reduced deliveries |
-| Local strike | Entire shift lost |
+A monsoon can wipe out ₹1500–₹3600 in weekly earnings. A heatwave kills afternoon shifts. A pollution spike or local strike means an entire day lost. No insurance product exists today that covers this.
 
-No insurance product currently protects daily gig income.
+## What SafeGig Does
 
----
+Workers pay a small weekly premium based on their risk profile. When a disruption hits their zone — heavy rain, extreme heat, hazardous AQI, or a curfew — the system detects it automatically, runs fraud checks, and triggers a payout. No paperwork, no claim forms, no waiting.
 
-## Solution
+## Risk Tiers
 
-SafeGig provides AI-powered parametric income insurance:
-- Weekly micro-insurance premiums
-- Automatic disruption detection
-- AI-based fraud prevention
-- Instant payout simulation
-- Worker-friendly dashboard
-
-**No paperwork. No claim forms. No waiting.**
-
----
-
-## Risk Tiers & Premiums
-
-| Risk Tier | Weekly Premium | Coverage |
+| Tier | Weekly Premium | Coverage |
 |---|---|---|
 | Low | ₹29 | ₹800 |
-| Standard | ₹49 | ₹1500 |
-| High | ₹79 | ₹2500 |
-| Premium | ₹89 | ₹3500 |
-
----
+| Standard | ₹49 | ₹1,500 |
+| High | ₹79 | ₹2,500 |
+| Premium | ₹89 | ₹3,500 |
 
 ## Parametric Triggers
 
-| Trigger | Condition | Data Source |
-|---|---|---|
-| Heavy Rain | Rainfall > 50 mm/hr | Weather API |
-| Extreme Heat | Temperature > 42°C | Weather API |
-| Severe Pollution | AQI > 300 | AQI API |
-| Curfew / Strike | Zone restricted | News / Mock API |
-
----
+| Trigger | Condition |
+|---|---|
+| Heavy Rain | Rainfall above 50 mm/hr |
+| Extreme Heat | Temperature above 42°C |
+| Severe Pollution | AQI above 300 |
+| Curfew or Strike | Zone flagged as restricted |
 
 ## Tech Stack
 
-**Frontend:** React.js, Tailwind CSS, Chart.js, Axios  
-**Backend:** Node.js + Express, JWT Auth  
-**ML Service:** Python FastAPI, XGBoost, Isolation Forest, Gemini API  
-**Infra:** Supabase, Vercel, Render, GitHub Actions
-
----
+Frontend is React with Tailwind CSS and Framer Motion. Backend is Node.js with Express and Supabase. ML service is Python FastAPI with inline risk scoring and fraud detection. Auth is handled via Supabase.
 
 ## How to Run
 
-```bash
-git clone https://github.com/your-repo/safegig.git
-cd safegig
-```
+Clone the repo and set up your `.env` using `.env.example` as a reference.
 
-**Backend:**
+Start the backend:
 ```bash
 cd backend
 npm install
-npm start
+node src/index.js
 ```
 
-**ML Service:**
-```bash
-cd ml-service
-python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-
-**Frontend:**
+Start the frontend:
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
----
+Open `http://localhost:5173` in your browser.
+
+Worker portal is at `/login` and `/register`. Admin portal is at `/admin/login` with credentials `admin@safegig.demo` and `SafeGig@2026`.
 
 ## Demo Flow
 
-1. Worker registers
-2. AI calculates weekly premium
-3. Policy activated
-4. Admin triggers disruption (rain/heat/AQI)
-5. Fraud detection runs
-6. Payout automatically generated
-7. Dashboard updates claim status
+A worker registers and the AI computes their weekly premium based on city, hours worked, and platform. They activate a policy. The admin fires a parametric trigger — say, heavy rain in Mumbai. The system runs fraud detection and auto-generates a payout. The worker sees the claim update live on their dashboard.
 
----
+## Team Codestorm
 
-## Team Codestorm — Guidewire DEVTrails 2026
-
-*Built with the vision of protecting the workers who keep India's cities running — one delivery at a time.*
+Built with the goal of protecting the workers who keep India's cities running, one delivery at a time.
